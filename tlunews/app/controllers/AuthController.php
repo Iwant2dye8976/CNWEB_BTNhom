@@ -28,7 +28,7 @@ class AuthController {
                 $news = $n->getAllNews();
                 // Điều hướng dựa trên vai trò
                 if ($user['role'] === 0) {
-                    include APP_ROOT."/app/views/admin/dashboard.php";
+                    header("Location: ?controller=admin&action=dashboard");
                 } else {
                     include APP_ROOT."/app/views/home/index.php";
                 }
@@ -46,7 +46,7 @@ class AuthController {
         // Hủy session và chuyển hướng
         session_unset();
         session_destroy();
-        header('Location: /admin/login.php');
+        header('Location: ?controller=auth&action=index');
         exit();
     }
 }

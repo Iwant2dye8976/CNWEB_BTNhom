@@ -4,6 +4,12 @@ require_once APP_ROOT."/app/services/NewsService.php";
 // require_once APP_ROOT."/app/config/database.php";
 
 class AdminController {
+    public function index() {
+        $n = new NewsService();
+        $news = $n->getAllNews();
+        include APP_ROOT."/app/views/admin/news/index.php";
+    }
+
     public function dashboard(){
         $n = new NewsService();
         $news = $n->getAllNews();
