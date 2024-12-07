@@ -24,8 +24,8 @@ class AuthController {
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
-                $n = new NewsService();
-                $news = $n->getAllNews();
+                $ns = new NewsService();
+                $news = $ns->getAllNews();
                 // Điều hướng dựa trên vai trò
                 if ($user['role'] === 0) {
                     header("Location: ?controller=admin&action=dashboard");

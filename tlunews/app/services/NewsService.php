@@ -47,23 +47,6 @@ class NewsService {
         }
     }
 
-    public function getAllCategories(){
-        try {
-            $conn = DataBase::connect();
-            $stmt = $conn->query("SELECT * FROM categories");
-            $categories_ = [];
-            while($row = $stmt->fetch()){
-                $categories = new Category($row['id'], $row['name']);
-                $categories_[] = $categories;
-            }
-            return $categories_;
-        } catch (PDOException $e) {
-         
-            echo "Lỗi kết nối: " . $e->getMessage();
-            return null; 
-        }
-    }
-
     public function getByCategory($category_id) {
         try {
             $conn = DataBase::connect();
@@ -90,32 +73,6 @@ class NewsService {
             $stmt->execute();
             $news_count = $stmt->fetchColumn(); // Lấy số lượng bản ghi từ cột đầu tiên của kết quả
             return $news_count;
-        } catch (PDOException $e) {
-         
-            echo "Lỗi kết nối: " . $e->getMessage();
-            return null; 
-        }
-    }
-    public function getUserCount(){
-        try {
-            $conn = DataBase::connect();
-            $stmt = $conn->prepare("SELECT COUNT(id) FROM users WHERE role = 1");
-            $stmt->execute();
-            $users_count = $stmt->fetchColumn(); // Lấy số lượng bản ghi từ cột đầu tiên của kết quả
-            return $users_count;
-        } catch (PDOException $e) {
-         
-            echo "Lỗi kết nối: " . $e->getMessage();
-            return null; 
-        }
-    }
-    public function getCategoryCount(){
-        try {
-            $conn = DataBase::connect();
-            $stmt = $conn->prepare("SELECT COUNT(id) FROM categories");
-            $stmt->execute();
-            $categories_count = $stmt->fetchColumn(); // Lấy số lượng bản ghi từ cột đầu tiên của kết quả
-            return $categories_count;
         } catch (PDOException $e) {
          
             echo "Lỗi kết nối: " . $e->getMessage();
