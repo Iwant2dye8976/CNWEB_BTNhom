@@ -49,7 +49,7 @@
 
         <!-- Submit Button -->
         <div class="d-grid">
-            <button type="submit" class="btn btn-primary" name="submit">Update News</button>
+            <button type="submit" class="btn btn-primary" name="submit">Add News</button>
         </div>
     </form>
 </div>

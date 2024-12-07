@@ -17,7 +17,7 @@
             return $this->name;
         }
 
-        public function Name($name){
+        public function setName($name){
             $this->name = $name;
         }
     }
