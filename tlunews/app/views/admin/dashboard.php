@@ -77,11 +77,13 @@
             </div>
         </div>
 
-        <div>
+        <div class="d-flex justify-content-start gap-3">
             <a href="?controller=admin&action=add" class="btn btn-success">Add news</a>
+            <a href="?controller=admin&action=index" class="btn btn-info">View News Wall</a>
+            <a href="?controller=auth&action=logout" class="btn btn-danger">Log Out</a>
         </div>
         <!-- Example Table -->
-        <h2 class="mt-5">Latest News</h2>
+        <h2 class="mt-5">News</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
