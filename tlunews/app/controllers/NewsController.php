@@ -1,26 +1,29 @@
 <?php
 require_once APP_ROOT."/app/services/NewsService.php";
+require_once APP_ROOT."/app/services/CategoryService.php";
     class NewsController {
         public function index(){
-            $n = new NewsService();
-            $news = $n->getAllNews();
-            $categories = $n->getAllCategories();
+            $ns = new NewsService();
+            $cs = new CategoryService();
+            $news = $ns->getAllNews();
+            $categories = $cs->getAllCategories();
             include APP_ROOT."/app/views/home/index.php";
         }
 
         public function detail(){
             if(isset($_GET['id'])){
-                $n = new NewsService();
-                $detail = $n->getById($_GET['id']);
+                $ns = new NewsService();
+                $detail = $ns->getById($_GET['id']);
                 include APP_ROOT."/app/views/news/detail.php";
             }
         }
 
         public function category(){
             if(isset($_GET['category_id'])){
-                $n = new NewsService();
-                $categories = $n->getAllCategories();
-                $news = $n->getByCategory($_GET['category_id']);
+                $ns = new NewsService();
+                $cs = new CategoryService();
+                $categories = $cs->getAllCategories();
+                $news = $ns->getByCategory($_GET['category_id']);
                 include APP_ROOT."/app/views/home/index.php";
             }
         }

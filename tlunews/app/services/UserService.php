@@ -17,5 +17,19 @@ class UserService {
             return null;
         }
     }
+
+    public function getUserCount(){
+        try {
+            $conn = DataBase::connect();
+            $stmt = $conn->prepare("SELECT COUNT(id) FROM users WHERE role = 1");
+            $stmt->execute();
+            $users_count = $stmt->fetchColumn(); // Lấy số lượng bản ghi từ cột đầu tiên của kết quả
+            return $users_count;
+        } catch (PDOException $e) {
+         
+            echo "Lỗi kết nối: " . $e->getMessage();
+            return null; 
+        }
+    }
 }
 ?>
