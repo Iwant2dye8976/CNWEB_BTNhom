@@ -1,32 +1,39 @@
 <?php
 require_once APP_ROOT."/app/services/AdminService.php";
 require_once APP_ROOT."/app/services/NewsService.php";
+require_once APP_ROOT."/app/services/CategoryService.php";
+require_once APP_ROOT."/app/services/UserService.php";
 // require_once APP_ROOT."/app/config/database.php";
 
 class AdminController {
     public function index() {
-        $n = new NewsService();
-        $news = $n->getAllNews();
+        $ns = new NewsService();
+        $cs = new CategoryService();
+        $news = $ns->getAllNews();
+        $categories = $cs->getAllCategories();
         include APP_ROOT."/app/views/admin/news/index.php";
     }
 
     public function dashboard(){
-        $n = new NewsService();
-        $news = $n->getAllNews();
+        $ns = new NewsService();
+        $cs = new CategoryService();
+        $us = new UserService();
+        $news = $ns->getAllNews();
         include APP_ROOT."/app/views/admin/dashboard.php";
     }
 
     public function add(){
-        $n = new NewsService();
-        $categories = $n->getAllCategories();
+        $cs = new CategoryService();
+        $categories = $cs->getAllCategories();
         include APP_ROOT."/app/views/admin/news/add.php";
     }
 
     public function edit(){
-        $n = new NewsService();
+        $ns = new NewsService();
+        $cs = new CategoryService();
         $id = $_GET['id'];
-        $news = $n->getById($id);
-        $categories = $n->getAllCategories();
+        $news = $ns->getById($id);
+        $categories = $cs->getAllCategories();
         include APP_ROOT."/app/views/admin/news/edit.php";
     }
 
