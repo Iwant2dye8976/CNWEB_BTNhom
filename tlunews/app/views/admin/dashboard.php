@@ -55,7 +55,7 @@
                 <div class="card text-white bg-primary mb-3">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-newspaper"></i> Total News</h5>
-                        <p class="card-text"><?= $n->getNewsCount()?></p>
+                        <p class="card-text"><?= $ns->getNewsCount()?></p>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                 <div class="card text-white bg-success mb-3">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-users"></i> Total Users</h5>
-                        <p class="card-text"><?= $n->getUserCount();?></p>
+                        <p class="card-text"><?= $us->getUserCount();?></p>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 <div class="card text-white bg-warning mb-3">
                     <div class="card-body">
                         <h5 class="card-title"><i class="fas fa-folder"></i> Total Categories</h5>
-                        <p class="card-text"><?= $n->getCategoryCount();?></p>
+                        <p class="card-text"><?= $cs->getCategoryCount();?></p>
                     </div>
                 </div>
             </div>
@@ -92,7 +92,7 @@
                     <th>Content</th>
                     <th>Image</th>
                     <th>Date</th>
-                    <th>Category Id</th>
+                    <th>Category</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -108,7 +108,7 @@
                         </div>
                     </td>
                     <td><?=$item->getCreated_at()?></td>
-                    <td><?=$item->getCategory_id()?></td>
+                    <td><?=$cs->getCategoryById($item->getCategory_id())->getName() ;?></td>
                     <td>
                         <a href="?controller=admin&action=edit&id=<?= $item->getID()?>" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i> Edit</a>
                         <a href="?controller=admin&action=delete&id=<?= $item->getID()?>" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Delete</a>
